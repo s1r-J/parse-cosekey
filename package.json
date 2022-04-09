@@ -1,0 +1,46 @@
+{
+  "name": "parse-cosekey",
+  "version": "0.1.0",
+  "description": "Parse COSE(CBOR Object Signing and Encryption) to JWK(JSON Web Key) or PEM.",
+  "main": "index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "index.js",
+    "dist/"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist/*",
+    "test": "npm run build && tap __test__/**/* --ts --no-check-coverage --timeout=300",
+    "prebuild": "npm run clean",
+    "build": "tsc"
+  },
+  "author": "s1r-J",
+  "license": "Apache-2.0",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/s1r-J/parse-cosekey.git"
+  },
+  "bugs": {
+    "url": "https://github.com/s1r-J/parse-cosekey/issues"
+  },
+  "homepage": "https://github.com/s1r-J/parse-cosekey#readme",
+  "devDependencies": {
+    "@types/node": "^16.11.3",
+    "@types/tap": "^15.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "eslint": "^8.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.4.1",
+    "tap": "^16.0.1",
+    "ts-node": "^10.3.1",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "cbor": "^8.0.2",
+    "extensible-custom-error": "0.0.7",
+    "jose": "^4.6.0",
+    "str2ab": "^1.1.0"
+  }
+}
