@@ -36,7 +36,7 @@ const cosekey = require('parse-cosekey');
 const jwk = cosekey.KeyParser.cose2jwk(coseMap);
 ```
 
-## Licence
+## License
 
 [Apache-2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
 
