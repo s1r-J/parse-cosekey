@@ -6,7 +6,7 @@ Parse COSE(CBOR Object Signing and Encryption) to JWK(JSON Web Key) or PEM.
 
 WebAuthn and FIDO2 requires converting COSE(CBOR Object Signing and Encryption, [RFC 8152](https://datatracker.ietf.org/doc/html/rfc8152)) into JWK(JSON Web Key, [RFC 7517](https://datatracker.ietf.org/doc/html/rfc7517)) or PEM.
 
-This module helps programmers to convert converting.
+This module helps programmers to conversion between COSE, JWK and PEM .
 
 ## Alternatives
 
