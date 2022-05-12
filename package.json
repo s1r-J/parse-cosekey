@@ -1,6 +1,6 @@
 {
   "name": "parse-cosekey",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Parse COSE(CBOR Object Signing and Encryption) to JWK(JSON Web Key) or PEM.",
   "main": "index.js",
   "types": "dist/index.d.ts",
@@ -10,13 +10,19 @@
   ],
   "scripts": {
     "clean": "rm -rf dist/*",
-    "test": "npm run build && tap __test__/**/* --ts --no-check-coverage --timeout=300",
+    "test:only": "tap __test__/**/* --ts --no-check-coverage --timeout=300",
+    "test": "npm run build && npm run test:only",
     "prebuild": "npm run clean",
     "build": "tsc"
   },
   "author": "s1r-J",
   "license": "Apache-2.0",
-  "keywords": [],
+  "keywords": [
+    "cose",
+    "jwk",
+    "pem",
+    "certificate"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/s1r-J/parse-cosekey.git"
