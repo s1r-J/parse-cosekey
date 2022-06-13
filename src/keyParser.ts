@@ -38,6 +38,9 @@ type pem = string;
 
 type pemType = 'PUBLIC KEY' | 'PRIVATE KEY';
 
+/**
+ * Parses between JSON Web Key (JWK), CBOR Object Signing and Encryption (COSE) and PEM.
+ */
 class KeyParser {
   static readonly BUFFER_TYPE_COSE_KEY_PARAMETER_NAME = [
     'kid',
@@ -154,6 +157,12 @@ class KeyParser {
     return null;
   }
 
+  /**
+   * Parse COSE key to JWK format.
+   *
+   * @param coseMap COSE key
+   * @returns JWK
+   */
   static cose2jwk(coseMap: coseMap): jwk {
     // specify key type
     const keyTypeValue = coseMap.get(COSEKeyCommonParameter.KTY.label);
@@ -199,6 +208,12 @@ class KeyParser {
     return jwk;
   }
 
+  /**
+   * Parse JWK to COSE key.
+   *
+   * @param jwk JWK
+   * @returns COSE key
+   */
   static jwk2cose(jwk: jwk): coseMap {
     const keyTypeValue = jwk.kty;
     if (!keyTypeValue) {
@@ -238,6 +253,12 @@ class KeyParser {
     return coseMap;
   }
 
+  /**
+   * Parse JWK to PEM.
+   *
+   * @param jwk JWK
+   * @returns PEM
+   */
   static async jwk2pem(jwk: jwk): Promise<pem> {
     try {
       const key = await jose.importJWK(jwk);
@@ -262,6 +283,15 @@ class KeyParser {
     }
   }
 
+  /**
+   * Parse PEM to JWK.
+   *
+   * This method's parameter `alg` is specified in JWK's "alg" parameter ({@link https://www.iana.org/assignments/jose/jose.xhtml#web-signature-encryption-algorithms | here} is registry).
+   *
+   * @param pem PEM
+   * @param alg JWK's "alg" parameter
+   * @returns JWK
+   */
   static async pem2jwk(pem: pem, alg?: string): Promise<jwk> {
     const pemLine = pem.split(/(\r\n|\r|\n)+/g);
     const match = /^-----BEGIN (RSA )?(PUBLIC|PRIVATE) KEY-----$/.exec(pemLine[0]);
@@ -284,6 +314,12 @@ class KeyParser {
     return jwk;
   }
 
+  /**
+   * Parse COSE key to PEM.
+   *
+   * @param coseMap COSE key
+   * @returns PEM
+   */
   static async cose2pem(coseMap: coseMap): Promise<pem> {
     const jwk = KeyParser.cose2jwk(coseMap);
     const pem = await KeyParser.jwk2pem(jwk);
@@ -291,6 +327,15 @@ class KeyParser {
     return pem;
   }
 
+  /**
+   * Parse PEM to COSE key.
+   *
+   * This method's parameter `alg` is specified in JWK's "alg" parameter ({@link https://www.iana.org/assignments/jose/jose.xhtml#web-signature-encryption-algorithms | here} is registry).
+   *
+   * @param pem PEM
+   * @param alg Key algorithm, specified with JWK's "alg" parameter
+   * @returns COSE key
+   */
   static async pem2cose(pem: string, alg?: string): Promise<coseMap> {
     const jwk = await KeyParser.pem2jwk(pem, alg);
     const coseMap = KeyParser.jwk2cose(jwk);
@@ -298,6 +343,12 @@ class KeyParser {
     return coseMap;
   }
 
+  /**
+   * Parse attestation object in webauthn to JWK.
+   *
+   * @param attObj Attestation object
+   * @returns JWK
+   */
   static attestationObject2jwk(attObj: Buffer): jwk {
     const decoded = cbor.decodeAllSync(attObj);
     const authData = decoded[0]['authData'];
@@ -309,6 +360,13 @@ class KeyParser {
     return KeyParser.cose2jwk(coseMap);
   }
 
+  /**
+   * Parse DER format key to PEM format.
+   *
+   * @param type Key type
+   * @param der DER format key
+   * @returns PEM format key
+   */
   static der2pem(type: pemType, der: Buffer): string {
     const base64 = str2ab.buffer2base64(der);
     return [
@@ -318,6 +376,12 @@ class KeyParser {
     ].join('');
   }
 
+  /**
+   * Parse PEM format key to DER format.
+   *
+   * @param pem PEM format key
+   * @returns DER format key
+   */
   static pem2der(pem: pem): Buffer {
     const base64 = pem
       .replace(/-----BEGIN (RSA )?(PUBLIC|PRIVATE) KEY-----/, '')
