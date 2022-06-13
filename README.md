@@ -19,11 +19,17 @@ This module helps programmers to conversion between COSE, JWK and PEM .
 
 ## Install
 
+[npm](https://www.npmjs.com/package/parse-cosekey)
+
 ```
 npm install parse-cosekey
 ```
 
-### ESM
+## Usage
+
+### Module
+
+#### ESM
 
 ```js
 import cosekey from 'parse-cosekey';
@@ -31,13 +37,17 @@ import cosekey from 'parse-cosekey';
 const jwk = cosekey.KeyParser.cose2jwk(coseMap);
 ```
 
-### CJS
+#### CJS
 
 ```js
 const cosekey = require('parse-cosekey');
 
 const jwk = cosekey.KeyParser.cose2jwk(coseMap);
 ```
+
+### API Reference
+
+https://s1r-j.github.io/parse-cosekey/
 
 ## License
 
