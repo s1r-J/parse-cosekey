@@ -1,6 +1,6 @@
 {
   "name": "parse-cosekey",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Parse COSE(CBOR Object Signing and Encryption) to JWK(JSON Web Key) or PEM.",
   "main": "index.js",
   "types": "dist/index.d.ts",
@@ -13,7 +13,8 @@
     "test:only": "tap __test__/**/* --ts --no-check-coverage --timeout=300",
     "test": "npm run build && npm run test:only",
     "prebuild": "npm run clean",
-    "build": "tsc"
+    "build": "tsc",
+    "doc": "typedoc --entryPoints src --entryPointStrategy expand --out ./docs --plugin ./node_modules/@youlin/typedoc-theme-hierarchy/dist/index.js --theme hierarchy"
   },
   "author": "s1r-J",
   "license": "Apache-2.0",
@@ -21,7 +22,10 @@
     "cose",
     "jwk",
     "pem",
-    "certificate"
+    "certificate",
+    "webauthn",
+    "fido",
+    "fido2"
   ],
   "repository": {
     "type": "git",
@@ -36,11 +40,14 @@
     "@types/tap": "^15.0.6",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
+    "@youlin/typedoc-theme-hierarchy": "^1.0.2",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.3.0",
+    "gh-pages": "^4.0.0",
     "prettier": "^2.4.1",
     "tap": "^16.0.1",
     "ts-node": "^10.3.1",
+    "typedoc": "^0.22.17",
     "typescript": "^4.4.4"
   },
   "dependencies": {
