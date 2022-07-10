@@ -371,7 +371,7 @@ class KeyParser {
     const base64 = str2ab.buffer2base64(der);
     return [
       `-----BEGIN ${type}-----\n`,
-      ...base64.match(/.{1,64}/g)!.map((s) => s + '\n'),
+      ...(base64.match(/.{1,64}/g) || []).join('\n'),
       `-----END ${type}-----\n`,
     ].join('');
   }
