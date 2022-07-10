@@ -34,7 +34,7 @@
   "bugs": {
     "url": "https://github.com/s1r-J/parse-cosekey/issues"
   },
-  "homepage": "https://github.com/s1r-J/parse-cosekey#readme",
+  "homepage": "https://s1r-j.github.io/parse-cosekey/",
   "devDependencies": {
     "@types/node": "^16.11.3",
     "@types/tap": "^15.0.6",
