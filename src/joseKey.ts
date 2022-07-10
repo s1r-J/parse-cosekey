@@ -1,3 +1,11 @@
+/**
+ * JSON Web Key (JWK) Types class.
+ * "kty" (Key Type) parameter.
+ *
+ * RFC: {@link https://datatracker.ietf.org/doc/html/rfc7517#section-4.1}
+ *
+ * Registry: {@link https://www.iana.org/assignments/jose/jose.xhtml#web-key-types}
+ */
 class JSONWebKeyType {
   static _values = [] as JSONWebKeyType[];
 
@@ -6,21 +14,49 @@ class JSONWebKeyType {
   static readonly OCT = new JSONWebKeyType('oct', 'Octet sequence');
   static readonly OKP = new JSONWebKeyType('OKP', 'Octet string key pairs');
 
+  /**
+   * Private constructor.
+   *
+   * @param _value key type.key type.
+   * @param _description Key type description
+   */
   private constructor(private _value: string, private _description: string) {
     JSONWebKeyType._values.push(this);
   }
 
+  /**
+   * Returns key type.
+   *
+   * @returns Key type
+   */
   get value(): string {
     return this._value;
   }
 
+  /**
+   * Returns key type description.
+   *
+   * @returns Key type description
+   */
   get description(): string {
     return this._description;
   }
+
+  /**
+   * Returns all JWK key type class.
+   *
+   * @returns All JWK key type class
+   */
   static values(): JSONWebKeyType[] {
     return JSONWebKeyType._values;
   }
 
+  /**
+   * Returns JWK key type class which has same key type to function's parameter.
+   *
+   * @param value Target key type
+   * @returns JWK key type class, if not found returns null
+   */
   static fromValue(value: string): JSONWebKeyType | null {
     const found = JSONWebKeyType.values().find((j) => {
       return j.value === value;
@@ -30,6 +66,14 @@ class JSONWebKeyType {
   }
 }
 
+/**
+ * JSON Web Signature and Encryption Algorithms class.
+ * "alg" (Algorithm) parameter.
+ *
+ * RFC: {@link https://datatracker.ietf.org/doc/html/rfc7517#section-4.4}
+ *
+ * Registry: {@link https://www.iana.org/assignments/jose/jose.xhtml#web-signature-encryption-algorithms}
+ */
 class JSONWebSignatureAndEncryptionAlgorithm {
   static _values = [] as JSONWebSignatureAndEncryptionAlgorithm[];
 
@@ -190,25 +234,59 @@ class JSONWebSignatureAndEncryptionAlgorithm {
     'sha256',
   );
 
+  /**
+   * Private constructor.
+   *
+   * @param _name Algorithm name
+   * @param _description Algorithm description
+   * @param _nodeCryptoHashAlg Node.js crypto module's algorithm name
+   */
   private constructor(private _name: string, private _description: string, private _nodeCryptoHashAlg: string | null) {
     JSONWebSignatureAndEncryptionAlgorithm._values.push(this);
   }
 
+  /**
+   * Returns algorithm name.
+   *
+   * @returns Algorithm name
+   */
   get name(): string {
     return this._name;
   }
 
+  /**
+   * Returns algorithm description.
+   *
+   * @returns Algorithm description
+   */
   get description(): string {
     return this._description;
   }
+
+  /**
+   * Returns Node.js crypto module's algorithm name.
+   *
+   * @returns Node.js crypto module's algorithm name
+   */
   get nodeCryptoHashAlg(): string | null {
     return this._nodeCryptoHashAlg;
   }
 
+  /**
+   * Returns all JSON Web Signature and Encryption Algorithms class.
+   *
+   * @returns All JSON Web Signature and Encryption Algorithms class
+   */
   static values(): JSONWebSignatureAndEncryptionAlgorithm[] {
     return JSONWebSignatureAndEncryptionAlgorithm._values;
   }
 
+  /**
+   * Returns JSON Web Signature and Encryption Algorithms class which has same algorithm name to function's parameter.
+   *
+   * @param name Target algorithm name
+   * @returns JSON Web Signature and Encryption Algorithms class, if not found returns null
+   */
   static fromName(name: string): JSONWebSignatureAndEncryptionAlgorithm | null {
     const found = JSONWebSignatureAndEncryptionAlgorithm.values().find((j) => {
       return j.name === name;
@@ -218,6 +296,13 @@ class JSONWebSignatureAndEncryptionAlgorithm {
   }
 }
 
+/**
+ * JSON Web Key Elliptic Curve class.
+ *
+ * RFC: {@link https://www.rfc-editor.org/rfc/rfc7518.html#section-6.2.1.1}
+ *
+ * Registry: {@link https://www.iana.org/assignments/jose/jose.xhtml#web-key-elliptic-curve}
+ */
 class JSONWebKeyEllipticCurve {
   static _values = [] as JSONWebKeyEllipticCurve[];
 
@@ -230,6 +315,12 @@ class JSONWebKeyEllipticCurve {
   static readonly X448 = new JSONWebKeyEllipticCurve('X448', 'X448 function key pairs');
   static readonly SECP256K1 = new JSONWebKeyEllipticCurve('secp256k1', 'SECG secp256k1 curve');
 
+  /**
+   * Private constructor.
+   *
+   * @param _name Curve name
+   * @param _description Curve description
+   */
   private constructor(private _name: string, private _description: string) {
     JSONWebKeyEllipticCurve._values.push(this);
   }
