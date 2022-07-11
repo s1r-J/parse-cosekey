@@ -2,7 +2,7 @@ import { test } from 'tap';
 import crypto from 'crypto';
 import str2ab from 'str2ab';
 import KeyParser from '../dist/keyParser';
-import verifier from '../dist/verifier';
+import Verifier from '../dist/verifier';
 
 test('# Verify with COSE', function (t) {
   t.test('## ES256', function (t) {
@@ -17,7 +17,8 @@ test('# Verify with COSE', function (t) {
 MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg870MB6gfuTJ4HtUn
 UvYMyJpr5eUZNP4Bk43bVdj3eAGhRANCAAQwoEJM0hwpRIOKLXXJKzfnbqINnwCJ
 OjtO7oo8Cq/sPuBLZekkVtmIi1Kzeb371R7oae8fD8ZbZllpW2zOCBcj
------END PRIVATE KEY-----`;
+-----END PRIVATE KEY-----
+`;
       const pubJWK = {
         kty: 'EC',
         alg: 'ES256',
@@ -31,7 +32,7 @@ OjtO7oo8Cq/sPuBLZekkVtmIi1Kzeb371R7oae8fD8ZbZllpW2zOCBcj
       const sign = crypto.createSign('sha256').update(data);
       const signature = sign.sign(privateKey);
 
-      const result = verifier.verifyWithCOSEKey(data, signature, cose);
+      const result = Verifier.verifyWithCOSEKey(data, signature, cose);
       t.ok(result);
       t.end();
     } catch (err) {
@@ -75,7 +76,7 @@ s6PPNqRlwK2+CPBiV93LxkqhRANCAATL774LU/mIvAz2AeDZe4eOgpa+ogwkWJIn
       const sign = crypto.createSign('sha256').update(data);
       const signature = sign.sign(privateKey);
 
-      const result = verifier.verifyWithCOSEKey(data, signature, cose);
+      const result = Verifier.verifyWithCOSEKey(data, signature, cose);
       t.ok(result);
       t.end();
     } catch (err) {
@@ -103,7 +104,8 @@ test('# Verify with JWK', function (t) {
 MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg870MB6gfuTJ4HtUn
 UvYMyJpr5eUZNP4Bk43bVdj3eAGhRANCAAQwoEJM0hwpRIOKLXXJKzfnbqINnwCJ
 OjtO7oo8Cq/sPuBLZekkVtmIi1Kzeb371R7oae8fD8ZbZllpW2zOCBcj
------END PRIVATE KEY-----`;
+-----END PRIVATE KEY-----
+`;
       const pubJWK = {
         kty: 'EC',
         alg: 'ES256',
@@ -116,7 +118,7 @@ OjtO7oo8Cq/sPuBLZekkVtmIi1Kzeb371R7oae8fD8ZbZllpW2zOCBcj
       const sign = crypto.createSign('sha256').update(data);
       const signature = sign.sign(privateKey);
 
-      const result = verifier.verifyWithJWK(data, signature, pubJWK);
+      const result = Verifier.verifyWithJWK(data, signature, pubJWK);
       t.ok(result);
       t.end();
     } catch (err) {
@@ -150,7 +152,7 @@ test('# Verify with PEM', function (t) {
       const sign = crypto.createSign('sha256').update(data);
       const signature = sign.sign(privateKey);
 
-      const result = verifier.verifyWithPEM(data, signature, publicKey, 'RS256');
+      const result = Verifier.verifyWithPEM(data, signature, publicKey, 'RS256');
       t.ok(result);
       t.end();
     } catch (err) {
@@ -180,7 +182,7 @@ test('# Verify with PEM', function (t) {
       const sign = crypto.createSign('sha512').update(data);
       const signature = sign.sign(privateKey);
 
-      const result = verifier.verifyWithPEM(data, signature, publicKey, 'RS512');
+      const result = Verifier.verifyWithPEM(data, signature, publicKey, 'RS512');
       t.ok(result);
       t.end();
     } catch (err) {
@@ -210,7 +212,7 @@ test('# Verify with PEM', function (t) {
       const sign = crypto.createSign('sha256').update(data);
       const signature = sign.sign(privateKey);
 
-      const result = verifier.verifyWithPEM(data, signature, publicKey, 'ES256K');
+      const result = Verifier.verifyWithPEM(data, signature, publicKey, 'ES256K');
       t.ok(result);
       t.end();
     } catch (err) {
