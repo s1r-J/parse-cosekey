@@ -32,7 +32,8 @@ const ES256 = {
   PEM: `-----BEGIN PUBLIC KEY-----
 MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE52TrrTvwA4dGmbfFQc6UeWoXrNZT
 61goui9Ao+NL99uTw9/XEO4stENOJ9VCUC6C718soO/o3tgdzp2tvBpALA==
------END PUBLIC KEY-----`,
+-----END PUBLIC KEY-----
+`,
   ATTESTATION_OBJECT: str2ab.base64url2buffer(
     'o2NmbXRmcGFja2VkZ2F0dFN0bXSjY2FsZyZjc2lnWEgwRgIhAP8GpebSNIp6hRSWD0C5-Rby7WaGEqqqilyfmwxKd8hvAiEAr2-HMPgLjTA7VgNpvh32xdsmXAf-cbJBgG1Hv3UtVENjeDVjgVkB3zCCAdswggF9oAMCAQICAQEwDQYJKoZIhvcNAQELBQAwYDELMAkGA1UEBhMCVVMxETAPBgNVBAoMCENocm9taXVtMSIwIAYDVQQLDBlBdXRoZW50aWNhdG9yIEF0dGVzdGF0aW9uMRowGAYDVQQDDBFCYXRjaCBDZXJ0aWZpY2F0ZTAeFw0xNzA3MTQwMjQwMDBaFw00MTEyMDExNTIxMTRaMGAxCzAJBgNVBAYTAlVTMREwDwYDVQQKDAhDaHJvbWl1bTEiMCAGA1UECwwZQXV0aGVudGljYXRvciBBdHRlc3RhdGlvbjEaMBgGA1UEAwwRQmF0Y2ggQ2VydGlmaWNhdGUwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASNYX5lyVCOZLzFZzrIKmeZ2jwURmgsJYxGP__fWN_S-j5sN4tT15XEpN_7QZnt14YvI6uvAgO0uJEboFaZlOEBoyUwIzATBgsrBgEEAYLlHAIBAQQEAwIFIDAMBgNVHRMBAf8EAjAAMA0GCSqGSIb3DQEBCwUAA0kAMEYCIQCvDWiYl9lric6PkfYkH812bRT6UyMZ0QruejnnoK2X2gIhALkk2RmA8ZTXFtX3hpFt46nKGSmK5llg59g38u062C5WaGF1dGhEYXRhWKR0puqSE8mcL3SyJJKzIM9AJiqUwalQoDl_KSULYIQe8EUAAAABAQIDBAUGBwgBAgMEBQYHCAAgLAZo3VcNKR1y2xRLmEhbKYeOAo4zmr3pIzhZne9s0MSlAQIDJiABIVgg52TrrTvwA4dGmbfFQc6UeWoXrNZT61goui9Ao-NL99siWCCTw9_XEO4stENOJ9VCUC6C718soO_o3tgdzp2tvBpALA',
   ),
@@ -63,7 +64,8 @@ IouUucVGCdmS45FdFk1bsrUBcuEGhMEaR/rbCFW71ZT9U4wM7LWDwp/tgFK0vsjG
 XvGcR4XTBjpsUxPmaWESaWDs+lE9doboeAFg4O7/GF9t3nr7RvIeTXBJhihDGQPo
 87HZomQ8X1fgtcbZ5wlQ9iPgV3X0llUSKjoktdkZdkWoWcuP2MBA/JblG715GJ4J
 5QIDAQAB
------END PUBLIC KEY-----`,
+-----END PUBLIC KEY-----
+`,
   ATTESTATION_OBJECT: str2ab.base64url2buffer(
     'o2NmbXRmcGFja2VkZ2F0dFN0bXSiY2FsZzglY3NpZ1kBAER0F31MoU5K9VvpiExwf2xUPeG_689_A0I5q8tEsruRIkF5fzWA1Uk8P4qlHwF9MOb5IU8jslnNQqtLQKv_fFgYXgERo_uts5GkWvZ8nWLrVUi_8cK1bpxF-PzzZaPt1g1Rk8Q2x7QPBW0ip_fKTnBTGfNhxO-OU3GncGj80t-_YMUsip_8b6raGCv9eOvXFIGR1qMbqmlqCSetoCyYKxQ6qC13tjuhpkcHwdOdSIdvd9IhFASC5EX3pRdiS2mvMDgcT6CfbjDPnq4wA5eBTVYjDv4Ibxc6omdz8K99em-flVLqxs0tSdfv9ddzo5lElhExMEP67Y-Op9BLwHvdLn9oYXV0aERhdGFZAWZJlg3liA6MaHQ0Fw9kdmBbj-SuuaKGMseZXPO6gx2XY0EAAAByBuy6aWZcQpm9f0NUYyTRzQAggJUd8LuTH3oDMKhNP85PN-VbPr1l5iuYBKzuJGLUQr-kAQMDOCUgWQEA5BvghPzxrftCxA55bImJXlgGO-xTNlK8VqLsHpT0lgDz0CdwbRyMAOee6h4sLc2OVlODMbNyUQWz8keM0UNmvU0GFhxkZrd1D9XeUJXTlETNl7ukvs8tbUybsa-V3Gd5lh-cNy4X36cnHyoSL2kjIouUucVGCdmS45FdFk1bsrUBcuEGhMEaR_rbCFW71ZT9U4wM7LWDwp_tgFK0vsjGXvGcR4XTBjpsUxPmaWESaWDs-lE9doboeAFg4O7_GF9t3nr7RvIeTXBJhihDGQPo87HZomQ8X1fgtcbZ5wlQ9iPgV3X0llUSKjoktdkZdkWoWcuP2MBA_JblG715GJ4J5SFDAQAB',
   ),
@@ -94,7 +96,8 @@ EW4XBAtNCsWG/WbVJb3RCKU3zg/Awh653Cy7jF9MJYocx0xQvmXrO1YKO0AlER/0
 pQKCHSSUBGx2+If/FlvV8qaJDB+dcb95hW2hSyqAxkw98HIb+/Aqb/LgfE5fE282
 DXrmWxwV8DZsYznTjFsWdfdnSwAI6qDP8l4+b0trHQijILPqwxdX4MjzkhURdrfi
 FQIDAQAB
------END PUBLIC KEY-----`,
+-----END PUBLIC KEY-----
+`,
   ATTESTATION_OBJECT: str2ab.base64url2buffer(
     'o2NmbXRmcGFja2VkZ2F0dFN0bXSiY2FsZzn__mNzaWdZAQBgVAcleGt8D0UxPBBtXmWKIz9EFYpaGSusT-2mZ-gNKddujUcLy7Hpx4FrYQC9407hcA95s1nTn5J6wHM-3MJkAiZn0lOLfY06B7NXQYwOBo_dKIZHnLUsmroM-YfA8HZAjzh8LVY_HCeqp6OlNuCJ1CHjXVfYYe2mcAXAfjUGLuQjjoSmpu-Mab4cJT1kXn4X8oJsTEKvAhUHcMpywA3m3FHtKRoTlSvUPuzx8x7uYgI5WcwdPRMKpikFW2NM7JoIWtKuYHReivi7E-burnbxc7Zi7sYLsWZi9HcWs2-gHjrvjF_OZeoTNFxqhHCc2HTz1eGdsulgE6AwzJEVeEdXaGF1dGhEYXRhWQFnSZYN5YgOjGh0NBcPZHZgW4_krrmihjLHmVzzuoMdl2NBAAAASKjVmSRjt0nqud40p1PeHgEAIOoSrKEjdRbYsb3qexiOCWZzHIHV0nfWoKlEl9IW3nxdpAEDAzn__iBZAQDOB0UvWTVx5lz7CXj8_yctVnRNKHvppRniDsvcWZW2zt7ljogvvIDCH6FLVdmLRBqDWQZ0tFIH5EarlNDK-_iu74gN3BDr0f6SEccmo-oyKv8PoAZ_FIyzjVAbsTtaoOZYd_f-FXwdYK3O4oM2dewRbhcEC00KxYb9ZtUlvdEIpTfOD8DCHrncLLuMX0wlihzHTFC-Zes7Vgo7QCURH_SlAoIdJJQEbHb4h_8WW9XypokMH51xv3mFbaFLKoDGTD3wchv78Cpv8uB8Tl8TbzYNeuZbHBXwNmxjOdOMWxZ192dLAAjqoM_yXj5vS2sdCKMgs-rDF1fgyPOSFRF2t-IVIUMBAAE',
   ),
@@ -125,7 +128,8 @@ ze0hQNMe5vBV8dbky2VlGZVPl6VHh7PiUHm91Nh3z0WbJ95h+8QPiVFWKewQlJqm
 pNYxbVH1qv3Wd8HTw389ff4MrJUREN21Kq5MWzP7KKQrdVbip+pUM3YhsypBu5ve
 KVV8PtNR/Q0hmeNeGB5qUnYOsO4IUS9eHW8iH7phbrwtJxj/WelFKSwswQ7tpTLl
 qQIDAQAB
------END PUBLIC KEY-----`,
+-----END PUBLIC KEY-----
+`,
   ATTESTATION_OBJECT: str2ab.base64url2buffer(
     'o2NmbXRmcGFja2VkZ2F0dFN0bXSiY2FsZzkBAmNzaWdZAQB322qZzn7oD5phI5ewlv_ecE3DwKH9WGZMHH5yZlQf57Yq7YCz2KjWGot5Eusu4RuNjRUlcx1WwZrf0SJSVC40PqzXg-pp40pCpYmwFogokMgWSc2zAmOd45Wx-DM-MhKWK87LENpZa6lQ6PZz2WWj9Vb7KBe91ZDU2oRB-3JV6C58Nk6xmZQf1F-HX0ja1RL4dGZV5yobUgoOT808HGsoeyL4sgxmcBTa0z5vU9vQn_7w78NNUX0Xoju9gn6lA_F-aclKTnN8Yt7k5hu1r5mFLxGbK_a7GyIA-eYYxv23RTRykOeG98cH_e5i8ncEgyABs8BRNAfREnOG-WY1gHhlaGF1dGhEYXRhWQFnSZYN5YgOjGh0NBcPZHZgW4_krrmihjLHmVzzuoMdl2NBAAAARR5PzqE2gUjTneucv10vebUAIGXoeLQOlu_--XwziaUPoNKS6RpdGuCW3ZAg_YfNq_KWpAEDAzkBAiBZAQCK1oX3GrokXGobcYYH4kEbCWJPhJVf57yYzg7cnE7DEpZEXztDegLrsc0euFoImcdbsBOZCYJcMXgmxfFyRWPN7SFA0x7m8FXx1uTLZWUZlU-XpUeHs-JQeb3U2HfPRZsn3mH7xA-JUVYp7BCUmqbSLoMMgCTYcOMnp4Psi03gzKm2AnoeXC0c09VTRjU5vBu63mTz2d9GyI6iJbzN50Sk1jFtUfWq_dZ3wdPDfz19_gyslREQ3bUqrkxbM_sopCt1VuKn6lQzdiGzKkG7m94pVXw-01H9DSGZ414YHmpSdg6w7ghRL14dbyIfumFuvC0nGP9Z6UUpLCzBDu2lMuWpIUMBAAE',
   ),
@@ -145,7 +149,8 @@ const EdDSA = {
   },
   PEM: `-----BEGIN PUBLIC KEY-----
 MCowBQYDK2VwAyEAwUmxVQnXOrjty7SgAbjZaXb1MmYgGQML4cLCW8fqNtk=
------END PUBLIC KEY-----`,
+-----END PUBLIC KEY-----
+`,
   ATTESTATION_OBJECT: str2ab.base64url2buffer(
     'o2NmbXRmcGFja2VkZ2F0dFN0bXSiY2FsZydjc2lnWEAEdQTpwhfFiIk3Lue0TxTuiZ-5MULNol0OGvCaOjDmUB4bdrRJs93T--xIR2zmjY4g24x_vckd7CHo6SYYzhgOaGF1dGhEYXRhWIFJlg3liA6MaHQ0Fw9kdmBbj-SuuaKGMseZXPO6gx2XY0EAAAA9kd_q15WeRHWtJpsNSCvgiQAgM6m97xU5whIAg9CL79sZnUGRSdzXPHoRlVKGlEzyzeWkAQEDJyAGIVggwUmxVQnXOrjty7SgAbjZaXb1MmYgGQML4cLCW8fqNtk',
   ),
@@ -203,7 +208,8 @@ const PRIV_KEY = {
 MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg870MB6gfuTJ4HtUn
 UvYMyJpr5eUZNP4Bk43bVdj3eAGhRANCAAQwoEJM0hwpRIOKLXXJKzfnbqINnwCJ
 OjtO7oo8Cq/sPuBLZekkVtmIi1Kzeb371R7oae8fD8ZbZllpW2zOCBcj
------END PRIVATE KEY-----`,
+-----END PRIVATE KEY-----
+`,
 };
 
 test('# cose <-> jwk', function (t) {
@@ -396,7 +402,7 @@ test('# cose <-> pem', function (t) {
   t.test('## ES256 cose -> pem', async function (t) {
     try {
       const pem = await KeyParser.cose2pem(ES256.COSE_MAP);
-      t.same(pem.replace(/(\n|\r|\r\n)+/g, ''), ES256.PEM.replace(/(\n|\r|\r\n)+/g, ''));
+      t.same(pem.replace(/(\n|\r|\r\n)+/g, '\n'), ES256.PEM.replace(/(\n|\r|\r\n)+/g, '\n'));
       t.end();
     } catch (err) {
       let message = `${t.name}: error`;
@@ -410,7 +416,7 @@ test('# cose <-> pem', function (t) {
   t.test('## ES256K cose -> pem', async function (t) {
     try {
       const pem = await KeyParser.cose2pem(ES256K.COSE_MAP);
-      t.same(pem.replace(/(\n|\r|\r\n)+/g, ''), ES256K.PEM.replace(/(\n|\r|\r\n)+/g, ''));
+      t.same(pem.replace(/(\n|\r|\r\n)+/g, '\n'), ES256K.PEM.replace(/(\n|\r|\r\n)+/g, '\n'));
       t.end();
     } catch (err) {
       let message = `${t.name}: error`;
@@ -424,7 +430,7 @@ test('# cose <-> pem', function (t) {
   t.test('## PS384 cose -> pem', async function (t) {
     try {
       const pem = await KeyParser.cose2pem(PS384.COSE_MAP);
-      t.same(pem.replace(/(\n|\r|\r\n)+/g, ''), PS384.PEM.replace(/(\n|\r|\r\n)+/g, ''));
+      t.same(pem.replace(/(\n|\r|\r\n)+/g, '\n'), PS384.PEM.replace(/(\n|\r|\r\n)+/g, '\n'));
       t.end();
     } catch (err) {
       let message = `${t.name}: error`;
@@ -438,7 +444,7 @@ test('# cose <-> pem', function (t) {
   t.test('## RS1 cose -> pem', async function (t) {
     try {
       const pem = await KeyParser.cose2pem(RS1.COSE_MAP);
-      t.same(pem.replace(/(\n|\r|\r\n)+/g, ''), RS1.PEM.replace(/(\n|\r|\r\n)+/g, ''));
+      t.same(pem.replace(/(\n|\r|\r\n)+/g, '\n'), RS1.PEM.replace(/(\n|\r|\r\n)+/g, '\n'));
       t.end();
     } catch (err) {
       let message = `${t.name}: error`;
@@ -452,7 +458,7 @@ test('# cose <-> pem', function (t) {
   t.test('## RS512 cose -> pem', async function (t) {
     try {
       const pem = await KeyParser.cose2pem(RS512.COSE_MAP);
-      t.same(pem.replace(/(\n|\r|\r\n)+/g, ''), RS512.PEM.replace(/(\n|\r|\r\n)+/g, ''));
+      t.same(pem.replace(/(\n|\r|\r\n)+/g, '\n'), RS512.PEM.replace(/(\n|\r|\r\n)+/g, '\n'));
       t.end();
     } catch (err) {
       let message = `${t.name}: error`;
@@ -466,7 +472,7 @@ test('# cose <-> pem', function (t) {
   t.test('## EdDSA cose -> pem', async function (t) {
     try {
       const pem = await KeyParser.cose2pem(EdDSA.COSE_MAP);
-      t.same(pem.replace(/(\n|\r|\r\n)+/g, ''), EdDSA.PEM.replace(/(\n|\r|\r\n)+/g, ''));
+      t.same(pem.replace(/(\n|\r|\r\n)+/g, '\n'), EdDSA.PEM.replace(/(\n|\r|\r\n)+/g, '\n'));
       t.end();
     } catch (err) {
       let message = `${t.name}: error`;
@@ -568,7 +574,7 @@ test('# jwk <-> pem', function (t) {
   t.test('## ES256 jwk -> pem', async function (t) {
     try {
       const pem = await KeyParser.jwk2pem(ES256.JWK);
-      t.same(pem.replace(/(\n|\r|\r\n)+/g, ''), ES256.PEM.replace(/(\n|\r|\r\n)+/g, ''));
+      t.same(pem.replace(/(\n|\r|\r\n)+/g, '\n'), ES256.PEM.replace(/(\n|\r|\r\n)+/g, '\n'));
       t.end();
     } catch (err) {
       let message = `${t.name}: error`;
@@ -582,7 +588,7 @@ test('# jwk <-> pem', function (t) {
   t.test('## ES256K jwk -> pem', async function (t) {
     try {
       const pem = await KeyParser.jwk2pem(ES256K.JWK);
-      t.same(pem.replace(/(\n|\r|\r\n)+/g, ''), ES256K.PEM.replace(/(\n|\r|\r\n)+/g, ''));
+      t.same(pem.replace(/(\n|\r|\r\n)+/g, '\n'), ES256K.PEM.replace(/(\n|\r|\r\n)+/g, '\n'));
       t.end();
     } catch (err) {
       let message = `${t.name}: error`;
@@ -596,7 +602,7 @@ test('# jwk <-> pem', function (t) {
   t.test('## PS384 jwk -> pem', async function (t) {
     try {
       const pem = await KeyParser.jwk2pem(PS384.JWK);
-      t.same(pem.replace(/(\n|\r|\r\n)+/g, ''), PS384.PEM.replace(/(\n|\r|\r\n)+/g, ''));
+      t.same(pem.replace(/(\n|\r|\r\n)+/g, '\n'), PS384.PEM.replace(/(\n|\r|\r\n)+/g, '\n'));
       t.end();
     } catch (err) {
       let message = `${t.name}: error`;
@@ -610,7 +616,7 @@ test('# jwk <-> pem', function (t) {
   t.test('## RS1 jwk -> pem', async function (t) {
     try {
       const pem = await KeyParser.jwk2pem(RS1.JWK);
-      t.same(pem.replace(/(\n|\r|\r\n)+/g, ''), RS1.PEM.replace(/(\n|\r|\r\n)+/g, ''));
+      t.same(pem.replace(/(\n|\r|\r\n)+/g, '\n'), RS1.PEM.replace(/(\n|\r|\r\n)+/g, '\n'));
       t.end();
     } catch (err) {
       let message = `${t.name}: error`;
@@ -624,7 +630,7 @@ test('# jwk <-> pem', function (t) {
   t.test('## RS512 jwk -> pem', async function (t) {
     try {
       const pem = await KeyParser.jwk2pem(RS512.JWK);
-      t.same(pem.replace(/(\n|\r|\r\n)+/g, ''), RS512.PEM.replace(/(\n|\r|\r\n)+/g, ''));
+      t.same(pem.replace(/(\n|\r|\r\n)+/g, '\n'), RS512.PEM.replace(/(\n|\r|\r\n)+/g, '\n'));
       t.end();
     } catch (err) {
       let message = `${t.name}: error`;
@@ -638,7 +644,7 @@ test('# jwk <-> pem', function (t) {
   t.test('## EdDSA jwk -> pem', async function (t) {
     try {
       const pem = await KeyParser.jwk2pem(EdDSA.JWK);
-      t.same(pem.replace(/(\n|\r|\r\n)+/g, ''), EdDSA.PEM.replace(/(\n|\r|\r\n)+/g, ''));
+      t.same(pem.replace(/(\n|\r|\r\n)+/g, '\n'), EdDSA.PEM.replace(/(\n|\r|\r\n)+/g, '\n'));
       t.end();
     } catch (err) {
       let message = `${t.name}: error`;
@@ -652,7 +658,7 @@ test('# jwk <-> pem', function (t) {
   t.test('## PrivateKey jwk -> pem', async function (t) {
     try {
       const pem = await KeyParser.jwk2pem(PRIV_KEY.JWK);
-      t.same(pem.replace(/(\n|\r|\r\n)+/g, ''), PRIV_KEY.PEM.replace(/(\n|\r|\r\n)+/g, ''));
+      t.same(pem.replace(/(\n|\r|\r\n)+/g, '\n'), PRIV_KEY.PEM.replace(/(\n|\r|\r\n)+/g, '\n'));
       t.end();
     } catch (err) {
       let message = `${t.name}: error`;
@@ -982,7 +988,7 @@ test('# der <-> pem', function (t) {
         }) as string;
 
       const pem = KeyParser.der2pem('PUBLIC KEY', keys.publicKey);
-      t.same(pem.replace(/(\n|\r|\r\n)+/g, ''), expected.replace(/(\n|\r|\r\n)+/g, ''));
+      t.same(pem.replace(/(\n|\r|\r\n)+/g, '\n'), expected.replace(/(\n|\r|\r\n)+/g, '\n'));
       t.end();
     } catch (err) {
       let message = `${t.name}: error`;
@@ -1018,7 +1024,7 @@ test('# der <-> pem', function (t) {
         }) as string;
 
       const pem = KeyParser.der2pem('PRIVATE KEY', keys.privateKey);
-      t.same(pem.replace(/(\n|\r|\r\n)+/g, ''), expected.replace(/(\n|\r|\r\n)+/g, '').replace(/(RSA )/g, ''));
+      t.same(pem.replace(/(\n|\r|\r\n)+/g, '\n'), expected.replace(/(\n|\r|\r\n)+/g, '\n').replace(/(RSA )/g, ''));
       t.end();
     } catch (err) {
       let message = `${t.name}: error`;
