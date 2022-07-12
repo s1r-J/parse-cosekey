@@ -39,7 +39,7 @@ type pem = string;
 type pemType = 'PUBLIC KEY' | 'PRIVATE KEY';
 
 /**
- * Parses between JSON Web Key (JWK), CBOR Object Signing and Encryption (COSE) and PEM.
+ * Parse between JSON Web Key (JWK), CBOR Object Signing and Encryption (COSE) and PEM.
  */
 class KeyParser {
   static readonly BUFFER_TYPE_COSE_KEY_PARAMETER_NAME = [
