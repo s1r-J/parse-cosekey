@@ -185,7 +185,7 @@ class COSEKeyTypeParameter extends COSEKeyParameter {
   );
   static readonly MATRIX_2 = new COSEKeyTypeParameter(
     COSEKeyType.WALNUT_DSA,
-    'matrix 1',
+    'matrix 2',
     -6,
     'NxN Matrix of entries in F_q in column-major form',
   );
