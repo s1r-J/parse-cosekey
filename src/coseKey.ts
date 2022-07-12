@@ -1,3 +1,5 @@
+import KeyParseError from './exception/keyParseError';
+
 abstract class COSEKeyParameterValue {}
 
 /**
@@ -665,12 +667,15 @@ class COSEKeyParameterValueMapping {
     return COSEKeyParameterValueMapping.fromParameter(parameter);
   }
 
-  fromValueLabel(label: any, keyType: COSEKeyType) {
+  fromValueLabel(label: any, keyType?: COSEKeyType) {
     if (this._value === COSEKeyType) {
       return COSEKeyType.fromValue(label);
     } else if (this._value === COSEKeyOperationValue) {
       return COSEKeyOperationValue.fromValue(label);
     } else if (this._value === COSEEllipticCurve) {
+      if (keyType == null) {
+        throw new KeyParseError('COSEEllipticCurve needs keyType.');
+      }
       return COSEEllipticCurve.fromValue(keyType, label);
     } else if (this._value === COSEAlgorithm) {
       return COSEAlgorithm.fromValue(label);
@@ -679,12 +684,15 @@ class COSEKeyParameterValueMapping {
     return null;
   }
 
-  fromValueName(name: string, keyType: COSEKeyType) {
+  fromValueName(name: string, keyType?: COSEKeyType) {
     if (this._value === COSEKeyType) {
       return COSEKeyType.fromName(name);
     } else if (this._value === COSEKeyOperationValue) {
       return COSEKeyOperationValue.fromName(name);
     } else if (this._value === COSEEllipticCurve) {
+      if (keyType == null) {
+        throw new KeyParseError('COSEEllipticCurve needs keyType.');
+      }
       return COSEEllipticCurve.fromName(keyType, name);
     } else if (this._value === COSEAlgorithm) {
       return COSEAlgorithm.fromName(name);
