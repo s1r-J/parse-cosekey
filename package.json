@@ -1,6 +1,6 @@
 {
   "name": "parse-cosekey",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Parse COSE(CBOR Object Signing and Encryption) to JWK(JSON Web Key) or PEM.",
   "main": "index.js",
   "types": "dist/index.d.ts",
@@ -14,7 +14,8 @@
     "test": "npm run build && npm run test:only",
     "prebuild": "npm run clean",
     "build": "tsc",
-    "doc": "typedoc --entryPoints src --entryPointStrategy expand --out ./docs --plugin ./node_modules/@youlin/typedoc-theme-hierarchy/dist/index.js --theme hierarchy"
+    "doc": "typedoc --entryPoints src --entryPointStrategy expand --out ./docs --plugin ./node_modules/@youlin/typedoc-theme-hierarchy/dist/index.js --theme hierarchy",
+    "lint": "eslint"
   },
   "author": "s1r-J",
   "license": "Apache-2.0",
@@ -34,7 +35,7 @@
   "bugs": {
     "url": "https://github.com/s1r-J/parse-cosekey/issues"
   },
-  "homepage": "https://github.com/s1r-J/parse-cosekey#readme",
+  "homepage": "https://s1r-j.github.io/parse-cosekey/",
   "devDependencies": {
     "@types/node": "^16.11.3",
     "@types/tap": "^15.0.6",

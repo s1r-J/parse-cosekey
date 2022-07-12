@@ -2,10 +2,10 @@ import { test } from 'tap';
 import crypto from 'crypto';
 import str2ab from 'str2ab';
 import KeyParser from '../dist/keyParser';
-import verifier from '../dist/verifier';
+import Verifier from '../dist/verifier';
 
 test('# Verify with COSE', function (t) {
-  t.test('## ES256', function (t) {
+  t.test('## ES256', async function (t) {
     try {
       // const privJWK = {
       //   kty: 'EC',
@@ -17,7 +17,8 @@ test('# Verify with COSE', function (t) {
 MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg870MB6gfuTJ4HtUn
 UvYMyJpr5eUZNP4Bk43bVdj3eAGhRANCAAQwoEJM0hwpRIOKLXXJKzfnbqINnwCJ
 OjtO7oo8Cq/sPuBLZekkVtmIi1Kzeb371R7oae8fD8ZbZllpW2zOCBcj
------END PRIVATE KEY-----`;
+-----END PRIVATE KEY-----
+`;
       const pubJWK = {
         kty: 'EC',
         alg: 'ES256',
@@ -31,7 +32,7 @@ OjtO7oo8Cq/sPuBLZekkVtmIi1Kzeb371R7oae8fD8ZbZllpW2zOCBcj
       const sign = crypto.createSign('sha256').update(data);
       const signature = sign.sign(privateKey);
 
-      const result = verifier.verifyWithCOSEKey(data, signature, cose);
+      const result = await Verifier.verifyWithCOSEKey(data, signature, cose);
       t.ok(result);
       t.end();
     } catch (err) {
@@ -43,7 +44,7 @@ OjtO7oo8Cq/sPuBLZekkVtmIi1Kzeb371R7oae8fD8ZbZllpW2zOCBcj
     }
   });
 
-  t.test('## ES256K', function (t) {
+  t.test('## ES256K', async function (t) {
     try {
       const privateKey = `-----BEGIN PRIVATE KEY-----
 MIGEAgEAMBAGByqGSM49AgEGBSuBBAAKBG0wawIBAQQgRo2gC67q1qWSZ+nkpHAT
@@ -75,7 +76,7 @@ s6PPNqRlwK2+CPBiV93LxkqhRANCAATL774LU/mIvAz2AeDZe4eOgpa+ogwkWJIn
       const sign = crypto.createSign('sha256').update(data);
       const signature = sign.sign(privateKey);
 
-      const result = verifier.verifyWithCOSEKey(data, signature, cose);
+      const result = await Verifier.verifyWithCOSEKey(data, signature, cose);
       t.ok(result);
       t.end();
     } catch (err) {
@@ -87,11 +88,46 @@ s6PPNqRlwK2+CPBiV93LxkqhRANCAATL774LU/mIvAz2AeDZe4eOgpa+ogwkWJIn
     }
   });
 
+  t.test('## cosealg not exist', async function (t) {
+    try {
+      const privateKey = `-----BEGIN PRIVATE KEY-----
+MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg870MB6gfuTJ4HtUn
+UvYMyJpr5eUZNP4Bk43bVdj3eAGhRANCAAQwoEJM0hwpRIOKLXXJKzfnbqINnwCJ
+OjtO7oo8Cq/sPuBLZekkVtmIi1Kzeb371R7oae8fD8ZbZllpW2zOCBcj
+-----END PRIVATE KEY-----
+`;
+      const pubJWK = {
+        kty: 'EC',
+        alg: 'ES256',
+        crv: 'P-256',
+        x: 'MKBCTNIcKUSDii11ySs3526iDZ8AiTo7Tu6KPAqv7D4',
+        y: '4Etl6SRW2YiLUrN5vfvVHuhp7x8PxltmWWlbbM4IFyM',
+      };
+      const cose = KeyParser.jwk2cose(pubJWK);
+      cose.delete(3);
+
+      const data = str2ab.string2buffer('test data to sign');
+      const sign = crypto.createSign('sha256').update(data);
+      const signature = sign.sign(privateKey);
+
+      await Verifier.verifyWithCOSEKey(data, signature, cose);
+      t.fail('Should Error thrown');
+    } catch (err) {
+      if (err instanceof Error) {
+        t.same(err.name, 'KeyParseError');
+        t.same(err.message, 'Cose map does not have valid alg value.');
+        t.end();
+      } else {
+        t.fail();
+      }
+    }
+  });
+
   t.end();
 });
 
 test('# Verify with JWK', function (t) {
-  t.test('## ES256', function (t) {
+  t.test('## ES256', async function (t) {
     try {
       // const privJWK = {
       //   kty: 'EC',
@@ -103,7 +139,8 @@ test('# Verify with JWK', function (t) {
 MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg870MB6gfuTJ4HtUn
 UvYMyJpr5eUZNP4Bk43bVdj3eAGhRANCAAQwoEJM0hwpRIOKLXXJKzfnbqINnwCJ
 OjtO7oo8Cq/sPuBLZekkVtmIi1Kzeb371R7oae8fD8ZbZllpW2zOCBcj
------END PRIVATE KEY-----`;
+-----END PRIVATE KEY-----
+`;
       const pubJWK = {
         kty: 'EC',
         alg: 'ES256',
@@ -116,7 +153,7 @@ OjtO7oo8Cq/sPuBLZekkVtmIi1Kzeb371R7oae8fD8ZbZllpW2zOCBcj
       const sign = crypto.createSign('sha256').update(data);
       const signature = sign.sign(privateKey);
 
-      const result = verifier.verifyWithJWK(data, signature, pubJWK);
+      const result = await Verifier.verifyWithJWK(data, signature, pubJWK);
       t.ok(result);
       t.end();
     } catch (err) {
@@ -128,11 +165,43 @@ OjtO7oo8Cq/sPuBLZekkVtmIi1Kzeb371R7oae8fD8ZbZllpW2zOCBcj
     }
   });
 
+  t.test('## JWK alg not exist', async function (t) {
+    try {
+      const privateKey = `-----BEGIN PRIVATE KEY-----
+MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg870MB6gfuTJ4HtUn
+UvYMyJpr5eUZNP4Bk43bVdj3eAGhRANCAAQwoEJM0hwpRIOKLXXJKzfnbqINnwCJ
+OjtO7oo8Cq/sPuBLZekkVtmIi1Kzeb371R7oae8fD8ZbZllpW2zOCBcj
+-----END PRIVATE KEY-----
+`;
+      const pubJWK = {
+        kty: 'EC',
+        crv: 'P-256',
+        x: 'MKBCTNIcKUSDii11ySs3526iDZ8AiTo7Tu6KPAqv7D4',
+        y: '4Etl6SRW2YiLUrN5vfvVHuhp7x8PxltmWWlbbM4IFyM',
+      };
+
+      const data = str2ab.string2buffer('test data to sign');
+      const sign = crypto.createSign('sha256').update(data);
+      const signature = sign.sign(privateKey);
+
+      await Verifier.verifyWithJWK(data, signature, pubJWK);
+      t.fail('Should Error thrown');
+    } catch (err) {
+      if (err instanceof Error) {
+        t.same(err.name, 'KeyParseError');
+        t.same(err.message, 'JWK does not have valid alg value.');
+        t.end();
+      } else {
+        t.fail();
+      }
+    }
+  });
+
   t.end();
 });
 
 test('# Verify with PEM', function (t) {
-  t.test('## RS256', function (t) {
+  t.test('## RS256', async function (t) {
     try {
       const { privateKey, publicKey } = crypto.generateKeyPairSync('rsa', {
         modulusLength: 4096,
@@ -150,7 +219,7 @@ test('# Verify with PEM', function (t) {
       const sign = crypto.createSign('sha256').update(data);
       const signature = sign.sign(privateKey);
 
-      const result = verifier.verifyWithPEM(data, signature, publicKey, 'RS256');
+      const result = await Verifier.verifyWithPEM(data, signature, publicKey, 'RS256');
       t.ok(result);
       t.end();
     } catch (err) {
@@ -162,7 +231,7 @@ test('# Verify with PEM', function (t) {
     }
   });
 
-  t.test('## RS512', function (t) {
+  t.test('## RS512', async function (t) {
     try {
       const { privateKey, publicKey } = crypto.generateKeyPairSync('rsa', {
         modulusLength: 4096,
@@ -180,7 +249,7 @@ test('# Verify with PEM', function (t) {
       const sign = crypto.createSign('sha512').update(data);
       const signature = sign.sign(privateKey);
 
-      const result = verifier.verifyWithPEM(data, signature, publicKey, 'RS512');
+      const result = await Verifier.verifyWithPEM(data, signature, publicKey, 'RS512');
       t.ok(result);
       t.end();
     } catch (err) {
@@ -192,7 +261,7 @@ test('# Verify with PEM', function (t) {
     }
   });
 
-  t.test('## ES256K', function (t) {
+  t.test('## ES256K', async function (t) {
     try {
       const { privateKey, publicKey } = crypto.generateKeyPairSync('ec', {
         namedCurve: 'secp256k1',
@@ -210,7 +279,7 @@ test('# Verify with PEM', function (t) {
       const sign = crypto.createSign('sha256').update(data);
       const signature = sign.sign(privateKey);
 
-      const result = verifier.verifyWithPEM(data, signature, publicKey, 'ES256K');
+      const result = await Verifier.verifyWithPEM(data, signature, publicKey, 'ES256K');
       t.ok(result);
       t.end();
     } catch (err) {

@@ -12,11 +12,23 @@ type jwk = {
 
 type pem = string;
 
+/**
+ * Verify data using signature and key(COSE, JWK or PEM).
+ */
 class Verifier {
   private constructor() {
     // private constructor
   }
 
+  /**
+   * Verify data using signature and COSE key.
+   *
+   * @param data verification content
+   * @param signature calculated signature for data
+   * @param key public key
+   * @returns Validity of signature
+   * @throws {@link KeyParseError} if COSE key is imperfect
+   */
   static async verifyWithCOSEKey(data: Buffer, signature: Buffer, key: coseMap): Promise<boolean> {
     const cosealg = COSEAlgorithm.fromValue(key.get(COSEKeyCommonParameter.ALG.label));
     if (cosealg == null) {
@@ -27,6 +39,15 @@ class Verifier {
     return Verifier.verifyWithPEM(data, signature, pem, cosealg.name, cosealg.nodeCryptoHashAlg || 'sha256');
   }
 
+  /**
+   * Verify data using signature and JWK.
+   *
+   * @param data verification content
+   * @param signature calculated signature for data
+   * @param key public key
+   * @returns Validity of signature
+   * @throws {@link KeyParseError} if JWK is imperfect
+   */
   static async verifyWithJWK(data: Buffer, signature: Buffer, key: jwk): Promise<boolean> {
     const jwkalg = JSONWebSignatureAndEncryptionAlgorithm.fromName(key[JSONWebKeyParameter.ALG.name]);
     if (jwkalg == null) {
@@ -37,6 +58,14 @@ class Verifier {
     return Verifier.verifyWithPEM(data, signature, pem, jwkalg.name, jwkalg.nodeCryptoHashAlg || 'sha256');
   }
 
+  /**
+   * Verify data using signature and PEM.
+   *
+   * @param data verification content
+   * @param signature calculated signature for data
+   * @param key public key
+   * @returns Validity of signature
+   */
   static verifyWithPEM(data: Buffer, signature: Buffer, key: pem, algorithm: string, hashAlgorithm?: string): boolean {
     if (algorithm === 'EdDSA') {
       return crypto.verify(hashAlgorithm || 'sha512', data, key, signature);
