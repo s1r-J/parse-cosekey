@@ -14,7 +14,8 @@
     "test": "npm run build && npm run test:only",
     "prebuild": "npm run clean",
     "build": "tsc",
-    "doc": "typedoc --entryPoints src --entryPointStrategy expand --out ./docs --plugin ./node_modules/@youlin/typedoc-theme-hierarchy/dist/index.js --theme hierarchy"
+    "doc": "typedoc --entryPoints src --entryPointStrategy expand --out ./docs --plugin ./node_modules/@youlin/typedoc-theme-hierarchy/dist/index.js --theme hierarchy",
+    "lint": "eslint"
   },
   "author": "s1r-J",
   "license": "Apache-2.0",
