@@ -312,24 +312,20 @@ test('# coseKey', function (t) {
       t.end();
     });
 
-    t.test('### fromValueLabel COSEEllipticCurve', function (t) {
-      const found = COSEKeyParameterValueMapping.EC2_CRV.fromValueLabel(1, COSEKeyType.EC2);
+    t.test('### fromValueLabel COSEEllipticCurve OKP', function (t) {
+      const found = COSEKeyParameterValueMapping.OKP_CRV.fromValueLabel(4);
+      t.same(found, COSEEllipticCurve.X25519);
+      t.end();
+    });
+
+    t.test('### fromValueLabel COSEEllipticCurve EC2', function (t) {
+      const found = COSEKeyParameterValueMapping.EC2_CRV.fromValueLabel(1);
       t.same(found, COSEEllipticCurve.P_256);
       t.end();
     });
 
-    t.test('### fromValueLabel COSEEllipticCurve throw error', function (t) {
-      try {
-        COSEKeyParameterValueMapping.EC2_CRV.fromValueLabel(1);
-        t.fail('Should throw error');
-      } catch (err) {
-        t.type(err, KeyParseError);
-      }
-      t.end();
-    });
-
     t.test('### fromValueLabel COSEEllipticCurve not found', function (t) {
-      const found = COSEKeyParameterValueMapping.EC2_CRV.fromValueLabel(999999, COSEKeyType.EC2);
+      const found = COSEKeyParameterValueMapping.EC2_CRV.fromValueLabel(999999);
       t.same(found, null);
       t.end();
     });
@@ -352,19 +348,15 @@ test('# coseKey', function (t) {
       t.end();
     });
 
-    t.test('### fromValueName COSEEllipticCurve', function (t) {
-      const found = COSEKeyParameterValueMapping.OKP_CRV.fromValueName('Ed25519', COSEKeyType.OKP);
+    t.test('### fromValueName COSEEllipticCurve OKP', function (t) {
+      const found = COSEKeyParameterValueMapping.OKP_CRV.fromValueName('Ed25519');
       t.same(found, COSEEllipticCurve.ED25519);
       t.end();
     });
 
     t.test('### fromValueName COSEEllipticCurve throw error', function (t) {
-      try {
-        COSEKeyParameterValueMapping.OKP_CRV.fromValueLabel('Ed25519');
-        t.fail('Should throw error');
-      } catch (err) {
-        t.type(err, KeyParseError);
-      }
+      const found = COSEKeyParameterValueMapping.EC2_CRV.fromValueName('P-512');
+      t.same(found, COSEEllipticCurve.P_512);
       t.end();
     });
 

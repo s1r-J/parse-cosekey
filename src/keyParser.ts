@@ -76,14 +76,14 @@ class KeyParser {
   private static findCoseKeyParameterValueFromLabel(
     label: any,
     keyParameter: COSEKeyCommonParameter | COSEKeyTypeParameter,
-    keyType: COSEKeyType,
+    keyType?: COSEKeyType,
   ): COSEKeyType | COSEKeyOperationValue | COSEEllipticCurve | COSEAlgorithm | null {
     const parameterValueMapping = COSEKeyParameterValueMapping.fromParameter(keyParameter);
     if (parameterValueMapping == null) {
       return null;
     }
 
-    return parameterValueMapping.fromValueLabel(label, keyType);
+    return parameterValueMapping.fromValueLabel(label);
   }
 
   private static findJSONWebKeyParameterFromName(name: string, keyType: JSONWebKeyType): JSONWebKeyParameter | null {
