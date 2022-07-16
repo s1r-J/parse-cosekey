@@ -313,7 +313,11 @@ test('# cose <-> jwk', function (t) {
 
   t.test('## ES256 jwk -> cose', function (t) {
     try {
-      const cose = KeyParser.jwk2cose(ES256.JWK);
+      const cose = KeyParser.jwk2cose({
+        ...ES256.JWK,
+        x: str2ab.buffer2base64url(ES256.JWK.x),
+        y: str2ab.buffer2base64url(ES256.JWK.y),
+      });
       t.same(cose, ES256.COSE_MAP);
       t.end();
     } catch (err) {
@@ -573,7 +577,11 @@ test('# cose <-> pem', function (t) {
 test('# jwk <-> pem', function (t) {
   t.test('## ES256 jwk -> pem', async function (t) {
     try {
-      const pem = await KeyParser.jwk2pem(ES256.JWK);
+      const pem = await KeyParser.jwk2pem({
+        ...ES256.JWK,
+        x: str2ab.buffer2base64url(ES256.JWK.x),
+        y: str2ab.buffer2base64url(ES256.JWK.y),
+      });
       t.same(pem.replace(/(\n|\r|\r\n)+/g, '\n'), ES256.PEM.replace(/(\n|\r|\r\n)+/g, '\n'));
       t.end();
     } catch (err) {

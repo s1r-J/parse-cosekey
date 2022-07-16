@@ -1,4 +1,5 @@
 import crypto from 'crypto';
+import { type } from 'os';
 import { COSEAlgorithm, COSEKeyCommonParameter } from './coseKey';
 import KeyParseError from './exception/keyParseError';
 import { JSONWebKeyParameter, JSONWebSignatureAndEncryptionAlgorithm } from './joseKey';
@@ -7,7 +8,34 @@ import KeyParser from './keyParser';
 type coseMap = Map<number, any>;
 
 type jwk = {
-  [key: string]: any;
+  kty?: string;
+  use?: string;
+  key_ops?: string[];
+  alg?: string;
+  kid?: string;
+  x5u?: string;
+  x5c?: string[];
+  x5t?: string;
+  'x5t#S256'?: string;
+  crv?: string;
+  x?: string;
+  y?: string;
+  d?: string;
+  n?: string;
+  e?: string;
+  p?: string;
+  q?: string;
+  dp?: string;
+  dq?: string;
+  qi?: string;
+  oth?: {
+    r?: string;
+    d?: string;
+    t?: string;
+  }[];
+  k?: string;
+  ext?: boolean;
+  [key: string]: unknown;
 };
 
 type pem = string;
@@ -49,7 +77,11 @@ class Verifier {
    * @throws {@link KeyParseError} if JWK is imperfect
    */
   static async verifyWithJWK(data: Buffer, signature: Buffer, key: jwk): Promise<boolean> {
-    const jwkalg = JSONWebSignatureAndEncryptionAlgorithm.fromName(key[JSONWebKeyParameter.ALG.name]);
+    const rawJwkalg = key[JSONWebKeyParameter.ALG.name];
+    if (typeof rawJwkalg !== 'string') {
+      throw new KeyParseError('JWK does not have valid alg value.');
+    }
+    const jwkalg = JSONWebSignatureAndEncryptionAlgorithm.fromName(rawJwkalg);
     if (jwkalg == null) {
       throw new KeyParseError('JWK does not have valid alg value.');
     }
