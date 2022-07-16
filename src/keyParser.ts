@@ -103,7 +103,6 @@ class KeyParser {
   private static findCoseKeyParameterValueFromLabel(
     label: any,
     keyParameter: COSEKeyCommonParameter | COSEKeyTypeParameter,
-    keyType?: COSEKeyType,
   ): COSEKeyType | COSEKeyOperationValue | COSEEllipticCurve | COSEAlgorithm | null {
     const parameterValueMapping = COSEKeyParameterValueMapping.fromParameter(keyParameter);
     if (parameterValueMapping == null) {
@@ -211,7 +210,7 @@ class KeyParser {
         continue;
       }
 
-      const parameterValue = this.findCoseKeyParameterValueFromLabel(value, keyParameter, keyType);
+      const parameterValue = this.findCoseKeyParameterValueFromLabel(value, keyParameter);
       if (parameterValue != null) {
         const joseParameterValue = this.convertCoseJoseValue(parameterValue);
         if (joseParameterValue instanceof JSONWebKeyType) {
