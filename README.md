@@ -1,6 +1,6 @@
 # parse-cosekey
 
-[![npm version](https://badge.fury.io/js/parse-cosekey.svg)](https://badge.fury.io/js/parse-cosekey) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![npm version](https://badge.fury.io/js/parse-cosekey.svg)](https://badge.fury.io/js/parse-cosekey) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Build Status](https://app.travis-ci.com/s1r-J/parse-cosekey.svg?branch=main)](https://app.travis-ci.com/s1r-J/parse-cosekey) [![Coverage Status](https://coveralls.io/repos/github/s1r-J/parse-cosekey/badge.svg?branch=main)](https://coveralls.io/github/s1r-J/parse-cosekey?branch=main)
 
 Parse COSE(CBOR Object Signing and Encryption) to JWK(JSON Web Key) or PEM.
 
