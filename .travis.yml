@@ -3,3 +3,5 @@ node_js:
   - lts/*
   - 16
   - 14
+notifications:
+  email: false

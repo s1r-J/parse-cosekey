@@ -1,5 +1,4 @@
 import crypto from 'crypto';
-import { type } from 'os';
 import { COSEAlgorithm, COSEKeyCommonParameter } from './coseKey';
 import KeyParseError from './exception/keyParseError';
 import { JSONWebKeyParameter, JSONWebSignatureAndEncryptionAlgorithm } from './joseKey';
