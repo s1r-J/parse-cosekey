@@ -99,7 +99,7 @@ class Verifier {
    */
   static verifyWithPEM(data: Buffer, signature: Buffer, key: pem, algorithm: string, hashAlgorithm?: string): boolean {
     if (algorithm === 'EdDSA') {
-      return crypto.verify(hashAlgorithm || 'sha512', data, key, signature);
+      return crypto.verify(null, data, key, signature);
     }
 
     let hashAlg = hashAlgorithm;
